@@ -1,9 +1,15 @@
 //Express
 const express = require('express');
 const app = express();
+const { sequelize, Sequelize } = require('./models/connection');
 
 //Port
 const port = process.env.PORT || 9000;
+
+//Root
+app.get('/', (req, res) => {
+  res.send('Deu bom');
+});
 
 //Server Start
 app.listen(port, () => {
