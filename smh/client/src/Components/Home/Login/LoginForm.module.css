@@ -1,0 +1,15 @@
+.form input {
+  color: var(--colorFontCinzaClaro);
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.15);
+}
+
+.form input:focus {
+  outline: none;
+}
+
+.form button {
+  margin: 0 auto;
+  margin-top: 90px;
+}
