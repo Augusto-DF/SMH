@@ -1,8 +1,8 @@
 //Connection
-const { sequelize, Sequelize } = require('./connection');
+const { Sequelize, sequelize } = require('./connection');
 
 //User table
-const User = sequelize.define('User', {
+const User = sequelize.define('users', {
   //First Name
   userFirstName: {
     type: Sequelize.STRING,
@@ -38,4 +38,4 @@ const User = sequelize.define('User', {
 });
 
 //User.sync({ force: true });
-exports.module = User;
+module.exports = User;

@@ -18,3 +18,14 @@ module.exports = {
   Sequelize: Sequelize,
   sequelize: sequelize,
 };
+
+/*
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Conectado com sucesso na url: http://localhost.');
+  })
+  .catch((erro) => {
+    console.log('Falha ao se conectar: ' + erro);
+  });
+*/
