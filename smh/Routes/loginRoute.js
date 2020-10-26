@@ -27,6 +27,6 @@ function login(req, res) {
     });
 }
 
-module.exports = {
-  _LOGIN: login,
+module.exports = (app) => {
+  app.post('/login', login);
 };
