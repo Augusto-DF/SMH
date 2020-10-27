@@ -1,5 +1,6 @@
-const User = require(__dirname + '/../models/User');
 const Sequelize = require('sequelize');
+const User = require(__dirname + '/../models/User');
+const { jwt, jwtFun } = require(__dirname + '/../token/jwt.js');
 
 // Login Function
 function login(req, res) {
@@ -20,10 +21,11 @@ function login(req, res) {
     },
   })
     .then((response) => {
-      res.json(response);
+      if (response.length === 1) res.send(response);
+      else res.json({ menssage: 'Usuário não encontrado ' });
     })
     .catch((err) => {
-      res.json({ menssage: 'Usuário não encontrado ' + err });
+      res.json({ menssage: 'Ocorreu um erro ' + err });
     });
 }
 

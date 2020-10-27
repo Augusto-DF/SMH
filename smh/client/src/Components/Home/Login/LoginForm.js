@@ -27,11 +27,9 @@ const LoginForm = () => {
   async function handleSubmit(e) {
     e.preventDefault();
     const { url, options } = LOGIN_POST({ username, password });
-    console.log(url);
-    console.log(options);
     const response = await fetch(url, options);
-    const json = await response.text();
-    return /*alert(json.menssage)*/ console.log(json);
+    const json = await response.json();
+    return json; //console.log(json);
   }
   return (
     <section>
@@ -43,7 +41,6 @@ const LoginForm = () => {
           name="username"
           onChange={(e) => {
             setUsername(e.target.value);
-            console.log('Entrou');
           }}
         />
         <Input
