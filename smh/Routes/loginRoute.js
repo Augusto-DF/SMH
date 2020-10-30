@@ -21,11 +21,23 @@ function login(req, res) {
     },
   })
     .then((response) => {
-      if (response.length === 1) res.send(response);
-      else res.json({ menssage: 'Usuário não encontrado ' });
+      if (response.length === 1)
+        res.json({
+          menssage: 'Bem vindo ' + response[0].userFirstName + '!',
+          token: jwtFun(response),
+          sucess: true,
+        });
+      else
+        res.json({
+          menssage: 'Usuário não encontrado ',
+          sucess: false,
+        });
     })
     .catch((err) => {
-      res.json({ menssage: 'Ocorreu um erro ' + err });
+      res.json({
+        menssage: 'Ocorreu um erro: ' + err,
+        sucess: false,
+      });
     });
 }
 

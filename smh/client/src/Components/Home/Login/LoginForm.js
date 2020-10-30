@@ -2,34 +2,17 @@ import React from 'react';
 import Button from '../../Forms/Button';
 import Input from '../../Forms/Input';
 import styles from './LoginForm.module.css';
+import { UserContext } from '../../../Contexts/UserContext';
 
 const LoginForm = () => {
-  //Target Server
-  const URL = 'http://localhost:9000/';
-
   const [username, setUsername] = React.useState();
   const [password, setPassword] = React.useState();
 
-  function LOGIN_POST(body) {
-    return {
-      url: URL + 'login',
-      options: {
-        method: 'POST',
-        headers: {
-          'Content-type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify(body),
-      },
-    };
-  }
+  const { userLogin } = React.useContext(UserContext);
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const { url, options } = LOGIN_POST({ username, password });
-    const response = await fetch(url, options);
-    const json = await response.json();
-    return json; //console.log(json);
+    userLogin(username, password);
   }
   return (
     <section>

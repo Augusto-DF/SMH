@@ -3,15 +3,13 @@ const jwt = require('jsonwebtoken');
 const secretKey = 'Azir32';
 
 function jwtFun(...data) {
-  var token = jwt.sign({ ...data }, secretKey, {
+  var result = jwt.sign({ ...data }, secretKey, {
     expiresIn: 60 * 24,
   });
 
-  const result = {
-    success: true,
-    message: 'Usuario Enconstrado',
-    token: token,
-  };
-  return result;
+  const token = result;
+  return token;
 }
-module.exports = { jwtFun, jwt };
+
+function decodeJwt(token) {}
+module.exports = { jwtFun, jwt, decodeJwt };
