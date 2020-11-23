@@ -1,0 +1,8 @@
+.mainMenu {
+  list-style: none;
+  display: flex;
+}
+
+.mainMenu li {
+  margin-right: 20px;
+}

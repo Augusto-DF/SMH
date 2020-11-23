@@ -1,0 +1,15 @@
+.grave {
+  margin-top: 12px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--colorFontErrorGrave);
+}
+
+.normal {
+  margin-top: 12px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--colorFontErrorNormal);
+}

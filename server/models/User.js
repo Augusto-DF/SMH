@@ -7,33 +7,49 @@ const User = sequelize.define('users', {
   userFirstName: {
     type: Sequelize.STRING,
     allowNull: false,
-    defaltValue: false,
+    defaultValue: false,
   },
   //Second Name
   userLastName: {
     type: Sequelize.STRING,
     allowNull: true,
-    defaltValue: false,
+    defaultValue: false,
   },
 
   userEmail: {
     type: Sequelize.STRING,
     allowNull: false,
-    defaltValue: false,
+    defaultValue: false,
     unique: true,
   },
 
   userPassword: {
     type: Sequelize.STRING,
     allowNull: false,
-    defaltValue: false,
+    defaultValue: false,
   },
 
   userNickName: {
     type: Sequelize.STRING,
     allowNull: false,
-    defaltValue: false,
+    defaultValue: false,
     unique: true,
+  },
+
+  userIsAdmin: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false,
+    defaultValue: 0,
+  },
+
+  createdAt: {
+    type: Sequelize.DATE,
+    defaultValue: Sequelize.NOW,
+  },
+
+  updatedAt: {
+    type: Sequelize.DATE,
+    defaultValue: Sequelize.NOW,
   },
 });
 

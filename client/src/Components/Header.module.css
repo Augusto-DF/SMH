@@ -1,0 +1,30 @@
+.header {
+  background-color: var(--colorBgDark);
+}
+
+.header nav {
+  height: 98px;
+  display: flex;
+  align-items: center;
+  font-family: 'Raleway', sans-serif;
+}
+
+.header h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--colorFontLight);
+}
+
+.alignRigth {
+  margin-left: auto;
+  margin-right: 28px;
+}
+
+.header a {
+  font-family: 'Raleway', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--colorFontLight);
+}

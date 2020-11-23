@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const User = require(__dirname + '/../models/User');
-const { jwt, jwtFun } = require(__dirname + '/../token/jwt.js');
+const { jwtFun, verifyJWT } = require(__dirname + '/../token/jwt.js');
 
 // Login Function
 function login(req, res) {
@@ -22,14 +22,14 @@ function login(req, res) {
   })
     .then((response) => {
       if (response.length === 1)
-        res.json({
+        res.status(200).json({
           menssage: 'Bem vindo ' + response[0].userFirstName + '!',
           token: jwtFun(response),
           sucess: true,
         });
       else
-        res.json({
-          menssage: 'Usuário não encontrado ',
+        res.status(401).json({
+          menssage: 'Usuário não cadastrado ',
           sucess: false,
         });
     })
@@ -43,4 +43,6 @@ function login(req, res) {
 
 module.exports = (app) => {
   app.post('/login', login);
+  app.get('/tokendecode', verifyJWT);
+  app.post('/tokendecodePOST', verifyJWT);
 };

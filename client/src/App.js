@@ -2,19 +2,21 @@ import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
-import Home from './Components/Home/Home';
 import './App.css';
 import { UserStorage } from './Contexts/UserContext';
 import Login from './Components/Home/Login/Login';
+import Admin from './Components/Home/Admin/Admin';
+import User from './Components/Home/User/User';
 function App() {
   return (
-    <div className={`container`}>
+    <div>
       <BrowserRouter>
         <UserStorage>
           <Header />
           <Routes>
-            <Route path="/*" element={<Home />} />
-            <Route path="login/*" element={<Login />} />
+            <Route path="/*" element={<Login />} />
+            <Route path="conta/admin/*" element={<Admin />} />
+            <Route path="conta/user/*" element={<User />} />
           </Routes>
           <Footer />
         </UserStorage>

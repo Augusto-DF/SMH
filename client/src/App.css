@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /*Color Fonts Vars*/
+  --colorFontDark: #333;
+  --colorFontCinzaClaro: #767676;
+  --colorFontLight: #f4f5fa;
+  --colorFontErrorGrave: #e80c26;
+  --colorFontErrorNormal: #e8830c;
+  --colorFontSucess: #22dd77;
+
+  /*Color Bg Button Vars*/
+  --colorButtonPrimary: #20e3e3;
+
+  /* Color Bg Vars*/
+  --colorBgDark: #25292f;
+  --colorBgSemiDark: #626468;
+  --colorBgLight: #f4f5fa;
+}
+
+.container {
+  width: 1074px;
+  margin: 0 auto;
+}
