@@ -1,5 +1,5 @@
 import React from 'react';
-import SelectModal from '../../Modals/SelectModal';
+import SelectModal from '../UI/Modals/SelectModal';
 import styles from './AdminMenu.module.css';
 const AdminMenu = () => {
   return (
@@ -15,7 +15,7 @@ const AdminMenu = () => {
           nameAnchor="Editar"
           options={[
             { op: 'Editar Serviços', path: '/' },
-            { op: 'Editar Funcionários', path: '/' },
+            { op: 'Editar Funcionários', path: 'editFuncionary' },
             { op: 'Editar Clientes', path: '/' },
           ]}
         />

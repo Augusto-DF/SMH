@@ -1,6 +1,6 @@
 import React from 'react';
-import Button from '../../Forms/Button';
-import Input from '../../Forms/Input';
+import Button from '../../UI/Forms/Button';
+import Input from '../../UI/Forms/Input';
 import styles from './LoginForm.module.css';
 import { UserContext } from '../../../Contexts/UserContext';
 

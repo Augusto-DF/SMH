@@ -26,4 +26,5 @@
 .container {
   width: 1074px;
   margin: 0 auto;
+  position: relative;
 }

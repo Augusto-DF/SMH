@@ -29,7 +29,7 @@ function login(req, res) {
         });
       else
         res.status(401).json({
-          menssage: 'Usuário não cadastrado ',
+          menssage: 'Usuário ou senha incorretos ',
           sucess: false,
         });
     })

@@ -15,12 +15,14 @@ function switchTypeError(type) {
   }
 }
 /**
- # Existem 3 opções de typeError
+ # Existem 2 opções de typeError
  #### Grave ( Vermelho )
  #### Normal ( Amarelo )
  */
 const Error = (props) => {
-  return <p className={switchTypeError(props.typeError)}>{props.value}</p>;
+  return (
+    <span className={switchTypeError(props.typeError)}>{props.value}</span>
+  );
 };
 
 export default Error;

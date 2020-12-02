@@ -2,7 +2,7 @@ import React from 'react';
 import LoginForm from './LoginForm';
 import styles from './Login.module.css';
 import { UserContext } from '../../../Contexts/UserContext';
-import Error from '../../Error/Error';
+import Error from '../../UI/Error/Error';
 const Login = () => {
   const { error } = React.useContext(UserContext);
   return (
