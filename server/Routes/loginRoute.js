@@ -1,5 +1,13 @@
 const Sequelize = require('sequelize');
-const User = require(__dirname + '/../models/User');
+const {
+  User,
+  findUser_id,
+  userExists,
+  createUser,
+  deleteUser,
+  updateUser,
+} = require(__dirname + '/../models/User');
+const Admin = require(__dirname + '/../models/Admin');
 const { jwtFun, verifyJWT } = require(__dirname + '/../token/jwt.js');
 
 // Login Function
@@ -41,8 +49,34 @@ function login(req, res) {
     });
 }
 
+async function teste(req, res) {
+  /*res.json(
+    await createUser(
+      'Nelsu',
+      'Paxêcu',
+      'nelsin123@gmail.com',
+      '159357',
+      'nenelsu',
+    ),
+  );*/
+  //res.json(await deleteUser(10));
+  /*res.json(
+    await updateUser(
+      11,
+      'Nelsuu',
+      'Paxêcu',
+      'nelsin123@gmail.com',
+      '159357',
+      'nenelsu',
+    ),
+  );*/
+  //res.json(await Admin.createAdmin(11));
+  //res.json(await Admin.deleteAdmin(3));
+}
+
 module.exports = (app) => {
   app.post('/login', login);
   app.get('/tokendecode', verifyJWT);
   app.post('/tokendecodePOST', verifyJWT);
+  app.get('/teste', teste);
 };

@@ -21,7 +21,6 @@ function verifyJWT(req, res, next) {
     return res.json({
       auth: true,
       token: decoded,
-      menssage: 'Usuário autenticado com sucesso',
     });
   });
 }

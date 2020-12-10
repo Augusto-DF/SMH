@@ -7,6 +7,8 @@ export const UserContext = React.createContext();
 export const UserStorage = ({ children }) => {
   const [login, setLogin] = React.useState(false);
   const [data, setData] = React.useState(null);
+  const [dataAdmin, setDataAdmin] = React.useState(null);
+  const [dataFunc, setDataFunc] = React.useState(null);
   const [error, setError] = React.useState(null);
   const navigate = useNavigate();
 

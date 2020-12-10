@@ -20,13 +20,15 @@ const SelectModal = (props) => {
   }
   return (
     <div onMouseLeave={handleMouseLeave} className={styles.selectModal}>
-      <Link
-        style={{ backgroundColor: bgColor, color: fontColor }}
-        to={!props.anchorPath ? '' : props.anchorPath}
-        onMouseEnter={handleMouseEnter}
-      >
-        {props.nameAnchor}
-      </Link>
+      <div className={styles.anchor} style={{ backgroundColor: bgColor }}>
+        <Link
+          style={{ color: fontColor }}
+          to={!props.anchorPath ? '' : props.anchorPath}
+          onMouseEnter={handleMouseEnter}
+        >
+          {props.nameAnchor}
+        </Link>
+      </div>
       <ul className={styles.list + ' ' + ulClass}>
         {props.options &&
           props.options.map((op, count) => (

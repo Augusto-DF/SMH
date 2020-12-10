@@ -1,8 +1,8 @@
 import React from 'react';
-import Button from '../../UI/Forms/Button';
-import Input from '../../UI/Forms/Input';
+import Button from '../UI/Forms/Button';
+import Input from '../UI/Forms/Input';
 import styles from './LoginForm.module.css';
-import { UserContext } from '../../../Contexts/UserContext';
+import { UserContext } from '../../Contexts/UserContext';
 
 const LoginForm = () => {
   const [username, setUsername] = React.useState();
