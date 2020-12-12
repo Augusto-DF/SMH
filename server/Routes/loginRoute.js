@@ -8,6 +8,7 @@ const {
   updateUser,
 } = require(__dirname + '/../models/User');
 const Admin = require(__dirname + '/../models/Admin');
+const Funcionary = require(__dirname + '/../models/Funcionary');
 const { jwtFun, verifyJWT } = require(__dirname + '/../token/jwt.js');
 
 // Login Function
@@ -72,6 +73,7 @@ async function teste(req, res) {
   );*/
   //res.json(await Admin.createAdmin(11));
   //res.json(await Admin.deleteAdmin(3));
+  //res.json(await Funcionary.createFuncionary(11, { permissions: 'basic' }));
 }
 
 module.exports = (app) => {

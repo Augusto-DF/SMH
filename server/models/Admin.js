@@ -53,7 +53,6 @@ async function findAdmin_id(id_) {
  */
 async function userIsAdmin(id_) {
   const result = await Admin.findAll({ where: { users_id: id_ } });
-  console.log(result);
   if (result.length > 0) return true;
   else return false;
 }
@@ -69,7 +68,7 @@ async function createAdmin(idUser) {
   if (user.id) {
     if (await userIsAdmin(idUser)) {
       return {
-        menssage: 'O usuário ' + user.userNickName + ' ja é um administrador',
+        menssage: user.userNickName + ' ja é um administrador',
       };
     } else {
       await Admin.create({ users_id: idUser });
