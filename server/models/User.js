@@ -65,7 +65,7 @@ const User = sequelize.define('users', {
  * @returns Um usuário caso encontre.
  * @returns Menssagem de error caso não encontre.
  */
-async function findUser_id(idTarget) {
+async function find(idTarget) {
   const target = await User.findOne({
     where: { id: idTarget },
   });
@@ -83,7 +83,7 @@ async function findUser_id(idTarget) {
  * @returns true se existir.
  * @returns false se não existir.
  */
-async function userExists(userNickName_, userEmail_) {
+async function exists(userNickName_, userEmail_) {
   const { Op } = Sequelize;
   const result = await User.findAll({
     where: {
@@ -102,14 +102,14 @@ async function userExists(userNickName_, userEmail_) {
  * @param {*} userPassword_
  * @param {*} userNickName_
  */
-async function createUser(
+async function create(
   userFirstName_,
   userLastName_,
   userEmail_,
   userPassword_,
   userNickName_,
 ) {
-  const userExist = await userExists(userNickName_, userEmail_);
+  const userExist = await exists(userNickName_, userEmail_);
   if (userExist) return { menssage: 'Usuário já cadastrado' };
   else {
     await User.create({
@@ -126,7 +126,7 @@ async function createUser(
  * @description Deleta um usuário a partir do id.
  * @param {*} id_
  */
-async function deleteUser(id_) {
+async function destroy(id_) {
   await User.destroy({
     where: { id: id_ },
   });
@@ -142,7 +142,7 @@ async function deleteUser(id_) {
  * @param {*} userPassword_
  * @param {*} userNickName_
  */
-async function updateUser(
+async function update(
   id_,
   userFirstName_,
   userLastName_,
@@ -169,9 +169,9 @@ async function updateUser(
 //User.sync({ force: true });
 module.exports = {
   User,
-  findUser_id,
-  userExists,
-  createUser,
-  deleteUser,
-  updateUser,
+  find,
+  exists,
+  create,
+  destroy,
+  update,
 };

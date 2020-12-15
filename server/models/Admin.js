@@ -1,6 +1,6 @@
 //Connection
 const { Sequelize, sequelize } = require('./connection');
-const { findUser_id } = require('./User');
+const User = require('./User');
 
 const Admin = sequelize.define(
   'admin',
@@ -33,7 +33,7 @@ const Admin = sequelize.define(
  * @returns Um admin se encontrar.
  * @returns Menssagem de error caso não ache.
  */
-async function findAdmin_id(id_) {
+async function find(id_) {
   const admin = await Admin.findAll({
     where: { admin_id: id_ },
   });
@@ -63,8 +63,8 @@ async function userIsAdmin(id_) {
  * @returns true caso o admin for adicionado com sucesso.
  * @return Mensagem de erro caso o admin não seja adicionado com sucesso.
  */
-async function createAdmin(idUser) {
-  const user = await findUser_id(idUser);
+async function create(idUser) {
+  const user = await User.find(idUser);
   if (user.id) {
     if (await userIsAdmin(idUser)) {
       return {
@@ -81,7 +81,7 @@ async function createAdmin(idUser) {
  * @description Deleta um administrador.
  * @param {*} id_
  */
-async function deleteAdmin(id_) {
+async function destroy(id_) {
   await Admin.destroy({
     where: { admin_id: id_ },
   });
@@ -89,4 +89,4 @@ async function deleteAdmin(id_) {
 }
 
 //Admin.sync({ force: true });
-module.exports = { Admin, findAdmin_id, userIsAdmin, createAdmin, deleteAdmin };
+module.exports = { Admin, find, userIsAdmin, create, destroy };

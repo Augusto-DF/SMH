@@ -33,7 +33,7 @@ const Client = sequelize.define(
  * @returns Um client se encontrar.
  * @returns Menssagem de error caso não ache.
  */
-async function findClient_id(id_) {
+async function find(id_) {
   const client = await Client.findAll({
     where: { client_id: id_ },
   });
@@ -63,7 +63,7 @@ async function userIsClient(id_) {
  * @returns true caso o client for adicionado com sucesso.
  * @return Mensagem de erro caso o client não seja adicionado com sucesso.
  */
-async function createClient(idUser) {
+async function create(idUser) {
   const user = await findUser_id(idUser);
   if (user.id) {
     if (await userIsClient(idUser)) {
@@ -81,7 +81,7 @@ async function createClient(idUser) {
  * @description Deleta um cliente.
  * @param {*} id_
  */
-async function deleteClient(id_) {
+async function destroy(id_) {
   await Client.destroy({
     where: { client_id: id_ },
   });
@@ -91,8 +91,8 @@ async function deleteClient(id_) {
 //Admin.sync({ force: true });
 module.exports = {
   Client,
-  findClient_id,
+  find,
   userIsClient,
-  createClient,
-  deleteClient,
+  create,
+  destroy,
 };

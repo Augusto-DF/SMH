@@ -1,14 +1,9 @@
 const Sequelize = require('sequelize');
-const {
-  User,
-  findUser_id,
-  userExists,
-  createUser,
-  deleteUser,
-  updateUser,
-} = require(__dirname + '/../models/User');
+const { User, find, exists, create, destroy, update } = require(__dirname +
+  '/../models/User');
 const Admin = require(__dirname + '/../models/Admin');
-const Funcionary = require(__dirname + '/../models/Funcionary');
+const Functionary = require(__dirname + '/../models/Functionary');
+const ScheduleConfigs = require(__dirname + '/../models/ScheduleConfigs');
 const { jwtFun, verifyJWT } = require(__dirname + '/../token/jwt.js');
 
 // Login Function
@@ -52,7 +47,7 @@ function login(req, res) {
 
 async function teste(req, res) {
   /*res.json(
-    await createUser(
+    await create(
       'Nelsu',
       'Paxêcu',
       'nelsin123@gmail.com',
@@ -60,9 +55,9 @@ async function teste(req, res) {
       'nenelsu',
     ),
   );*/
-  //res.json(await deleteUser(10));
+  //res.json(await destroy(10));
   /*res.json(
-    await updateUser(
+    await update(
       11,
       'Nelsuu',
       'Paxêcu',
@@ -71,9 +66,14 @@ async function teste(req, res) {
       'nenelsu',
     ),
   );*/
-  //res.json(await Admin.createAdmin(11));
-  //res.json(await Admin.deleteAdmin(3));
-  //res.json(await Funcionary.createFuncionary(11, { permissions: 'basic' }));
+  //res.json(await Admin.create(11));
+  //res.json(await Admin.destroy(3));
+  //res.json(await Funcionary.create(11, { permissions: 'basic' }));
+  res.json(await ScheduleConfigs.find(4));
+  /*res.json(
+    await ScheduleConfigs.create('Agenda do admin', '8:00:00', '22:00:00', 2),
+  );*/
+  //res.json(await ScheduleConfigs.destroy(3));
 }
 
 module.exports = (app) => {
