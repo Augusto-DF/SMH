@@ -69,7 +69,7 @@ async function teste(req, res) {
   //res.json(await Admin.create(11));
   //res.json(await Admin.destroy(3));
   //res.json(await Funcionary.create(11, { permissions: 'basic' }));
-  res.json(await ScheduleConfigs.find(4));
+  //res.json(await ScheduleConfigs.find(4));
   /*res.json(
     await ScheduleConfigs.create('Agenda do admin', '8:00:00', '22:00:00', 2),
   );*/

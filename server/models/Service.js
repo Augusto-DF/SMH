@@ -54,7 +54,7 @@ async function find(id_) {
 
 /**
  * @description Verifica se um serviço ja existe baseado em seu nome.
- * @param {*} id_
+ * @param {*} name_
  * @returns true se existir.
  * @returns false se não existir.
  */
