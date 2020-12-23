@@ -123,4 +123,18 @@ async function update(id_, serviceName_, duration_, description_) {
   }
 }
 
-module.exports = { Service, find, create, destroy, update };
+/**
+ * @description Lista todos os serviços.
+ * @returns Uma lista de serviços caso exista ao menos 1 serviço.
+ * @return Mensagem de erro caso não exista nenhum serviço.
+ */
+async function list() {
+  try {
+    const services = await Service.findAll();
+    if (services.length > 0) return JSON.stringify(services);
+    else return { menssage: 'Não existe nenhum serviço cadastrado' };
+  } catch (err) {
+    return err;
+  }
+}
+module.exports = { Service, find, create, destroy, update, list };

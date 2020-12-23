@@ -36,7 +36,7 @@ const Functionarys = sequelize.define(
  * @returns Menssagem de error caso não ache.
  */
 async function find(id_) {
-  const fun = await Funcionary.findAll({
+  const fun = await Functionarys.findAll({
     where: { funcionary_id: id_ },
   });
 
@@ -54,7 +54,7 @@ async function find(id_) {
  * @returns false se não for um admin.
  */
 async function userIsFunctionary(idUser) {
-  const result = await Funcionary.findAll({ where: { users_id: idUser } });
+  const result = await Functionarys.findAll({ where: { users_id: idUser } });
   if (result.length > 0) return true;
   else return false;
 }
@@ -74,7 +74,10 @@ async function create(idUser, permissions_) {
         menssage: user.userNickName + ' ja é um funcionário',
       };
     } else {
-      await Funcionary.create({ users_id: idUser, permissions: permissions_ });
+      await Functionarys.create({
+        users_id: idUser,
+        permissions: permissions_,
+      });
       return true;
     }
   } else return { menssage: 'Usuário inválido' };
@@ -85,7 +88,7 @@ async function create(idUser, permissions_) {
  * @param {*} id_
  */
 async function destroy(id_) {
-  await Funcionary.destroy({
+  await Functionarys.destroy({
     where: { funcionary_id: id_ },
   });
   return true;

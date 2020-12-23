@@ -8,13 +8,11 @@ const FuncsHasServices = sequelize.define(
   {
     funcionary_id: {
       type: Sequelize.INTEGER,
-      autoIncrement: true,
       allowNull: false,
     },
 
     service_id: {
       type: Sequelize.INTEGER,
-      autoIncrement: true,
       allowNull: false,
     },
   },
@@ -49,11 +47,14 @@ async function find(idFunctionary, idService) {
  * @returns false se a relação não existir.
  */
 async function exists(idFunctionary, idService) {
-  const relation = await FuncsHasServices.fidAll({
-    where: { funcionary_id: idFunctionary, service_id: idService },
-  });
+  const sql =
+    'SELECT * FROM funcionary_has_service WHERE funcionary_id = ' +
+    idFunctionary +
+    ' AND service_id = ' +
+    idService;
+  const [results, metadata] = await sequelize.query(sql);
 
-  if (relation) return true;
+  if (results.length > 0) return true;
   else return false;
 }
 
@@ -61,21 +62,29 @@ async function exists(idFunctionary, idService) {
  * @description Cria uma relação de funcionario com um serviço se ambos existirem.
  * @param {*} idFunctionary
  * @param {*} idService
- * @returns A relação se existir.
+ * @returns true se a relação for criada.
  * @returns Menssagem de error caso não ache.
  */
 async function create(idFunctionary, idService) {
   const func = await Func.find(idFunctionary);
   const service = await Service.find(idService);
-
-  if (func.funcionary_id && service.service_id) {
+  if (func[0].dataValues && service[0].dataValues) {
     const relationExists = await exists(idFunctionary, idService);
-
     if (relationExists) return { menssage: 'A relação ja existe.' };
     else {
-      await FuncsHasServices.create({
-        where: { funcionary_id: idFunctionary, service_id: idService },
-      });
+      const sql =
+        'INSERT INTO funcionary_has_service (funcionary_id, service_id) VALUES (' +
+        idFunctionary +
+        ',' +
+        idService +
+        ')';
+      try {
+        await sequelize.query(sql);
+      } catch (err) {
+        console.log(err);
+        return false;
+      }
+      return true;
     }
   } else return { menssage: 'Funcionário ou serviço não encontrados' };
 }
