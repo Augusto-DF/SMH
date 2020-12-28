@@ -1,0 +1,8 @@
+.serviceContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.serviceContainer button {
+  margin-right: 46px;
+}

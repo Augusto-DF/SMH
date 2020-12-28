@@ -4,10 +4,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--colorFontBranco);
+  color: var(--colorFontLight);
   background-color: var(--colorButtonPrimary);
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
   border-radius: 5px;
   font-size: 18px;
   font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  cursor: pointer;
 }

@@ -43,7 +43,7 @@ async function find(id_) {
   if (fun) {
     return fun;
   } else {
-    return { menssage: 'Administrador não existente' };
+    return { menssage: 'Funcionário não existente' };
   }
 }
 
@@ -86,6 +86,7 @@ async function create(idUser, permissions_) {
 /**
  * @description Deleta um funcionário.
  * @param {*} id_
+ * @returns true se tudo occorer bem.
  */
 async function destroy(id_) {
   await Functionarys.destroy({
@@ -111,4 +112,21 @@ async function update(id_, permissions_) {
     return err;
   }
 }
-module.exports = { Functionarys, find, create, destroy, update };
+/**
+ * @description Lista todos os funcionários.
+ * @returns Lista de funionários (Com os atributos de usuário tambem) caso exista algum funcionário cadastrado.
+ * @returns Menssagem de erro caso não exista nenhum funcionário cadastrado.
+ */
+async function list() {
+  const sql =
+    'SELECT * FROM users INNER JOIN funcionary ON users.id = funcionary.users_id;';
+  try {
+    const [result, metadata] = await sequelize.query(sql);
+    return result;
+  } catch (err) {
+    console.log(err);
+    return { menssage: 'Não existe nenhum funcionário cadastrado' };
+  }
+}
+
+module.exports = { Functionarys, find, create, destroy, update, list };

@@ -1,5 +1,6 @@
 //Connection
 const { Sequelize, sequelize } = require('./connection');
+const FuncsHasService = require(__dirname + '/FunctionarysHasServices');
 
 const Service = sequelize.define(
   'service',
@@ -41,13 +42,16 @@ const Service = sequelize.define(
  * @returns Menssagem de error caso não ache.
  */
 async function find(id_) {
+  console.log('Entrou em serviço');
   const service = await Service.findAll({
     where: { service_id: id_ },
   });
-
+  console.log('Entrou em serviço 2');
   if (service) {
+    console.log('Entrou em serviço 3');
     return service;
   } else {
+    console.log('Entrou em serviço 4');
     return { menssage: 'Serviço não existente' };
   }
 }
@@ -69,7 +73,7 @@ async function exists(name_) {
  * @param {*} serviceName_
  * @param {*} duration_
  * @param {*} description_
- * @returns true caso o serviço for adicionado com sucesso.
+ * @returns service caso o serviço for adicionado com sucesso.
  * @return Mensagem de erro caso o serviço não seja adicionado com sucesso.
  */
 async function create(serviceName_, duration_, description_) {
@@ -78,23 +82,33 @@ async function create(serviceName_, duration_, description_) {
       menssage: serviceName_ + ' ja é um serviço',
     };
   } else {
-    await Service.create({
+    const service = await Service.create({
       serviceName: serviceName_,
       duration: duration_,
       description: description_,
     });
-    return true;
+    return service;
   }
 }
 
 /**
  * @description Deleta um serviço.
- * @param {*} id_
+ * @param {Array} list_id
+ * @returns true se tudo ocorrer bem.
+ * @returns false se algo não ocorrer bem.
  */
-async function destroy(id_) {
-  await Service.destroy({
-    where: { service_id: id_ },
-  });
+async function destroy(list_id) {
+  const targets = list_id.toString().replace(',', ' OR service_id = ');
+  const sql = 'DELETE FROM service WHERE service_id = ' + targets;
+  try {
+    await sequelize.query(sql);
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+  /*await Service.destroy({
+    where: { service_id: list_id },
+  });*/
   return true;
 }
 
@@ -137,4 +151,5 @@ async function list() {
     return err;
   }
 }
-module.exports = { Service, find, create, destroy, update, list };
+
+module.exports = { Service, create, destroy, update, list, find };

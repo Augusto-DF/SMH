@@ -1,6 +1,6 @@
 import React from 'react';
-import Button from '../UI/Forms/Button';
-import Input from '../UI/Forms/Input';
+import ButtonLogin from '../UI/Buttons/ButtonLogin';
+import Input from '../UI/Inputs/Input';
 import styles from './LoginForm.module.css';
 import { UserContext } from '../../Contexts/UserContext';
 
@@ -32,7 +32,7 @@ const LoginForm = () => {
           type="password"
           name="password"
         />
-        <Button value="Entrar" className="ButtonLogin" />
+        <ButtonLogin value="Entrar" className="buttonLogin" />
       </form>
     </section>
   );

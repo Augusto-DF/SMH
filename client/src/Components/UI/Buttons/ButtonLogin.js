@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './Button.module.css';
+import styles from './ButtonLogin.module.css';
 
-const Button = (props) => {
+const ButtonLogin = (props) => {
   return (
     <button className={styles.button} onClick={props.onClick}>
       {props.value}
@@ -9,4 +9,4 @@ const Button = (props) => {
   );
 };
 
-export default Button;
+export default ButtonLogin;

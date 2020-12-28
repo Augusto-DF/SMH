@@ -14,7 +14,7 @@ const AdminMenu = () => {
         <SelectModal
           nameAnchor="Editar"
           options={[
-            { op: 'Editar Serviços', path: '/' },
+            { op: 'Editar Serviços', path: 'editService' },
             { op: 'Editar Funcionários', path: 'editFuncionary' },
             { op: 'Editar Clientes', path: '/' },
           ]}

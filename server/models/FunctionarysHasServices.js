@@ -66,27 +66,23 @@ async function exists(idFunctionary, idService) {
  * @returns Menssagem de error caso não ache.
  */
 async function create(idFunctionary, idService) {
-  const func = await Func.find(idFunctionary);
-  const service = await Service.find(idService);
-  if (func[0].dataValues && service[0].dataValues) {
-    const relationExists = await exists(idFunctionary, idService);
-    if (relationExists) return { menssage: 'A relação ja existe.' };
-    else {
-      const sql =
-        'INSERT INTO funcionary_has_service (funcionary_id, service_id) VALUES (' +
-        idFunctionary +
-        ',' +
-        idService +
-        ')';
-      try {
-        await sequelize.query(sql);
-      } catch (err) {
-        console.log(err);
-        return false;
-      }
+  const relationExists = await exists(idFunctionary, idService);
+  if (relationExists === true) return { menssage: 'A relação ja existe.' };
+  else {
+    const sql =
+      'INSERT INTO funcionary_has_service (funcionary_id, service_id) VALUES (' +
+      idFunctionary +
+      ',' +
+      idService +
+      ')';
+    try {
+      await sequelize.query(sql);
       return true;
+    } catch (err) {
+      console.log(err);
+      return false;
     }
-  } else return { menssage: 'Funcionário ou serviço não encontrados' };
+  }
 }
 
 /**
