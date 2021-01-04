@@ -1,0 +1,83 @@
+.externWrapper {
+  flex: 1;
+  height: 56px;
+  padding: 0 34px;
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.block1 {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 130%;
+}
+
+.block1 span {
+  margin-left: 20px;
+  color: var(--colorFontCinzaClaro);
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkBox {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid;
+  box-sizing: border-box;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.visible {
+  background-color: #22eeee;
+  border-color: #22eeee;
+}
+
+.visible img {
+  display: block;
+  user-select: none;
+}
+
+.invisible {
+  background-color: #fff;
+  border-color: #828282;
+}
+
+.invisible img {
+  display: none;
+}
+
+.buttonList {
+  height: 30px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.buttonList button {
+  flex: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  cursor: pointer;
+  user-select: none;
+}
+
+.separator {
+  width: 1006px;
+  height: 1px;
+  margin-top: 25px;
+  background-color: var(--colorBgLightGrey);
+}

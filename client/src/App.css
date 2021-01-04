@@ -17,11 +17,14 @@
   /*Color Bg Button Vars*/
   --colorButtonPrimary: #20e3e3;
   --colorButtonPrimaryUltraLight: #fff;
+  --colorButtonAddIcon: #22eeee;
 
   /* Color Bg Vars*/
   --colorBgDark: #25292f;
   --colorBgSemiDark: #626468;
+  --colorBgLightGrey: #c4c4c4;
   --colorBgLight: #f4f5fa;
+  --colorBgUltraLight: #fff;
 }
 
 .container {

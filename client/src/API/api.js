@@ -38,3 +38,12 @@ export function TOKEN_VALIDATE_POST(token) {
     },
   };
 }
+
+export function SERVICES_GET() {
+  return {
+    url: URL + '/admin/listServices',
+    options: {
+      method: 'GET',
+    },
+  };
+}

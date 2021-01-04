@@ -1,10 +1,10 @@
 import React from 'react';
-import Button3rdLeftIcon from '../Buttons/Button3rdLeftIcon';
+import Button3rdLeftIcon from '../../../UI/Buttons/Button3rdLeftIcon';
 import styles from './SelectersActions.module.css';
-import trashIconDesabled from './../../../Assets/trash-icon-desabled.svg';
-import trashIconenabled from './../../../Assets/trash-icon-enabled.svg';
-import addUserabled from './../../../Assets/add-user-enabled.svg';
-import addUserDesabled from './../../../Assets/add-user-desabled.svg';
+import trashIconDesabled from './../../../../Assets/trash-icon-desabled.svg';
+import trashIconenabled from './../../../../Assets/trash-icon-enabled.svg';
+import addUserabled from './../../../../Assets/add-user-enabled.svg';
+import addUserDesabled from './../../../../Assets/add-user-desabled.svg';
 
 const SelectersActions = (props) => {
   return (
